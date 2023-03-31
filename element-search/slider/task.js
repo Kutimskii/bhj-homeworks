@@ -8,6 +8,12 @@ function setActive(numberOfSlide) {
   });
   slides[numSlide].classList.remove("slider__item_active");
   dots[numSlide].classList.remove("slider__dot_active");
+  if (numberOfSlide === undefined) {
+    let number = numSlide;
+    slides[number].classList.add("slider__item_active");
+    dots[number].classList.add("slider__dot_active");
+    return;
+  }
   if (numberOfSlide === slides.length) {
     let number = numberOfSlide - slides.length;
     slides[number].classList.add("slider__item_active");
@@ -23,7 +29,7 @@ function setActive(numberOfSlide) {
   slides[numberOfSlide].classList.add("slider__item_active");
   dots[numberOfSlide].classList.add("slider__dot_active");
 }
-setActive(0);
+setActive();
 function nextSlide() {
   let numSlide = slides.findIndex((element) => {
     return element.classList.contains("slider__item_active");
