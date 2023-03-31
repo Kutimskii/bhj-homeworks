@@ -3,16 +3,17 @@ const menuSub = Array.from(document.querySelectorAll(".menu__item .menu_sub"));
 for (let link of menuLink) {
   link.onclick = function openSub() {
     if (link.nextElementSibling) {
-      menuSub.forEach((el) => {
-        el.classList.remove("menu_active");
-      });
-      link
-        .closest("li")
-        .querySelector(".menu_sub")
-        .classList.add("menu_active");
-    }
-    if (link.closest("ul").classList.contains("menu_sub")) {
-      return false;
+      if (link.nextElementSibling.classList.contains("menu_active")) {
+        menuSub.forEach((el) => {
+          el.classList.remove("menu_active");
+        });
+      } else {
+        menuSub.forEach((el) => {
+          el.classList.remove("menu_active");
+        });
+        link.nextElementSibling.classList.add("menu_active");
+      }
     }
   };
 }
+
