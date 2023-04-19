@@ -21,14 +21,15 @@ function chating (event) {
   let randomAnswer = answersOfBot[Math.floor(Math.random() * answersOfBot.length)];
   const date = new Date();
   let dayTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-  if ((input.value) && event.key ==="Enter" ) {
+  if (input.value && event.key ==="Enter" && !(input.value.match(/^[ ]+$/))) {
     messages.innerHTML += `
   <div class="message message_client">
     <div class="message__time">${dayTime}</div>
     <div class="message__text">
-      ${input.value}
+      ${(input.value)}
     </div>
   </div>`
+    input.value = "";
     answer (dayTime, randomAnswer)
     return
   } 
