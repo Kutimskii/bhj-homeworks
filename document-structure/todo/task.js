@@ -15,8 +15,9 @@ function addTask () {
     el.parentElement.remove()
     }
   })
+  input.value = "";
   return false
   }
+  return false
 }
 addBtn.onclick = addTask
-
